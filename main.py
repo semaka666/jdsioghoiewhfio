@@ -2,14 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 Простое Android приложение Motion Tracker
-Минимальная версия без сложных зависимостей
+Минимальная версия для тестирования сборки
 """
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.uix.camera import Camera
 from kivy.clock import Clock
 from kivy.logger import Logger
 from kivy.core.window import Window
@@ -33,20 +32,12 @@ class MotionTrackerApp(App):
             font_size='24sp',
             bold=True,
             color=(1, 1, 1, 1),
-            size_hint_y=0.1
+            size_hint_y=0.2
         )
         layout.add_widget(title)
         
-        # Камера
-        self.camera = Camera(
-            resolution=(640, 480),
-            play=True,
-            size_hint_y=0.6
-        )
-        layout.add_widget(self.camera)
-        
         # Кнопки
-        button_layout = BoxLayout(orientation='horizontal', size_hint_y=0.2, spacing=10)
+        button_layout = BoxLayout(orientation='horizontal', size_hint_y=0.3, spacing=10)
         
         start_btn = Button(
             text='СТАРТ',
@@ -74,9 +65,18 @@ class MotionTrackerApp(App):
             text='Готов к работе',
             font_size='16sp',
             color=(0.8, 0.8, 0.8, 1),
-            size_hint_y=0.1
+            size_hint_y=0.2
         )
         layout.add_widget(self.status_label)
+        
+        # Информация
+        info_label = Label(
+            text='Простое приложение для тестирования\nсборки Android APK',
+            font_size='14sp',
+            color=(0.6, 0.6, 0.6, 1),
+            size_hint_y=0.3
+        )
+        layout.add_widget(info_label)
         
         return layout
     
